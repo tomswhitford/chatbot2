@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+        <title>ChatGPT</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+
+        <!-- <meta http-equiv="refresh" content="URL=https://talktohim.org/assets/music2-9eac0fa4dabffb7bcaff794e9d09b3aa1a1282c694d929941e7838117cf37660.mp3" /> -->
+	
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+		<meta name="theme-color" content="#2261ab">
+	
+		<link rel="stylesheet" media="all" href="https://talktohim.org/assets/application-e1d235f06f908355dcffb2c98d25ba1cfc098ded98fc0797aa6fa89efb3f4cae.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Bootstrap JavaScript and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script>
+            var guestCredits = 25;
+            var registerCredits = 250;
+            var devicePlatform = "desktop";
+		</script>
+    </head>
+    <body>
+        <div class="back-img"></div>
+        <div class="body-wrap">
+            <div class="body-wrap-inner">
+            
+                <div class="header">
+                    <div class="header-inner">
+                        <!-- <div id="logo_wrap" class="logo-wrap">
+                            <div class="logo" id="logo" onclick="logoClick()"><b>TalkToHim</b>.org</div>
+                        </div> -->
+                        <div class="header-chat" id="header_chat" style="display: block;">
+                            <div class="header-avatar" id="header_avatar" onclick="" style="background-image: url('/assets/img/avatar.jpg');"></div>
+                            <!-- <div class="header-name" id="header_name" onclick="toggleMain()">Jesus</div> -->
+                        </div>
+                        <!-- <div class="header-button header-button-main" id="header_button_main" onclick="toggleMain()"><div></div></div> -->
+                        <div class="header-button header-button-settings" id="header_button_settings" data-toggle="modal" data-target="#loginModal"><div></div></div>
+                        <!-- <div class="header-button header-button-share" id="header_button_share" onclick="alert('Sharing of chat transcripts is coming soon!')"><div></div></div> -->
+                        <!-- <div class="header-search">
+                            <div id="search_wrap" class="header-search-inner">
+                            </div>
+                        </div>
+                        <div id="tagline" class="tagline">Chat to any object, organism,<br /> concept, and beyond...</div> -->
+                    </div>
+                </div>
+            
+                <div id="wrap" class="wrap">
+                    <div id="wrap_inner" class="wrap-inner">
+                        <div id="chat_wrap" class="view-wrap chat-wrap">
+                            <div id="chat_inner" class="chat-inner">
+                                <div class="chat-disclaimer">Note: This is a simulated chat with a Professor using AI.</div>
+                                <div id="chatbox">
+                                </div>
+                                <div class="message message-typing" id="chat-loading" style="display: none;">
+                                    <div class="message-bubble">
+                                        <div class="message-text">
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="toolbar" id="toolbar">
+                    <div class="toolbar-inner">
+                        <div id="input_wrap" class="input-wrap">
+                            <textarea id="input" class="input" rows="3" placeholder="Write a message" enterkeyhint="send" autocomplete="off" spellcheck="false"></textarea>          
+                            <div class="send-button" id="sendButton"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Add your login form here -->
+                  <form>
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" id="username" placeholder="Enter your username" autocomplete="given-name">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="login">Download</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+            ind = 0;
+            prompts = ["prompts"];
+            // document.addEventListener('DOMContentLoaded', function() {
+            //     var audio = document.getElementById('backAudio');
+            //     audio.load();
+            //     audio.autoplay = true;
+            // });
+
+            // const voices = window.speechSynthesis.getVoices();
+            // const selectedVoice = voices.find(voice => voice.name === 'David');
+
+            // $("#chatbox").on('click', '.message-mute', function() {
+            //     var id = $(this).attr('item');
+            //     $(this).removeClass('message-mute-paused');
+            //     $(this).addClass('message-mute-loading');
+            //     const synthesis = window.speechSynthesis;
+            //     synthesis.voice = portugueseVoice;
+            //     let utterance = new SpeechSynthesisUtterance();
+            //     utterance.text = prompts[id];
+            //     utterance.voice = voices[0];
+
+            //     utterance.onstart = () => {
+            //         // console.log('Speech synthesis started.');
+            //         $(this).removeClass('message-mute-loading');
+            //         $(this).addClass('message-mute-playing');
+            //     };
+
+            //     utterance.onend = () => {
+            //         // console.log('Speech synthesis ended.');
+            //         $(this).removeClass('message-mute-paying');
+            //         $(this).addClass('message-mute-paused');
+            //     };
+
+            //     synthesis.cancel();
+            //     synthesis.speak(utterance);
+            // });
+
+            getResponse = async (request) => {
+                // var llmresult = document.getElementById('llmresult');
+                // var output = document.getElementById('output');
+                ind ++;
+                $("#chat-loading").show();
+                var html = `<div class="message message-user">
+                            <div class="message-bubble">
+                                <div class="message-text">
+                                    <text id="output" class="hide">`;
+                html += request;
+                html +=             `</text>
+                                </div>
+                            </div>
+                        </div>`;
+                $("#chatbox").append(html);
+                var response = await sendMessageToServer(request);
+                $("#chat-loading").hide();
+                var html = `<div class="message">
+                            <div class="message-bubble">
+                                <div class="message-text">
+                                    <text id="llmresult">`;
+                html += response;
+                html +=             `</text>
+                                </div>
+                            </div>
+                        </div>`;
+                $("#chatbox").append(html);
+                prompts.push(response);
+
+                // Add an event listener to the speak button
+                // Get the text from the text area
+            }
+            
+            
+            $("#sendButton").click(function() {
+                var input = $("#input").val();
+                getResponse(input);
+            });
+
+            $("#login").click(function() {
+                if($("#username").val() == "admin" && $("#password").val() == "123"){
+                    alert("Thanks for using our chatbot");
+                    download();
+                }else{
+                    alert("Username & Password Incorrect");
+                }
+            });
+        </script>
+        <script src="script.js"></script>
+   </body>
+</html>

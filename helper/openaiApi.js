@@ -4,10 +4,9 @@ const { OpenAI } = require("openai");
 const fs = require('fs');
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env["OPENAI_API_KEY"],
 });
 //it is working now.
-
 const chatCompletion = async (prompt) => {
     try {
         const education = await fs.promises.readFile('training_data/education.txt', 'utf8');
@@ -20,17 +19,15 @@ const chatCompletion = async (prompt) => {
                 // areas of expertise
                 // { "role": "system", "content": company_information_data },
                 // key benefits
-                { "role": "system", "content": education },
                 { "role": "user", "content": prompt }
             ],
             temperature : 1.2
         });
-        let content = response.choices[0].message.content;
 
+        let content = response.choices[0].message.content;
         ///////////////////////////////   TTS    //////////////////////////////////
 
         ///////////////////////////////////////////////////////////////////////////
-
         return {
             status: 1,
             response: content

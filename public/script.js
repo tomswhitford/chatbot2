@@ -21,17 +21,19 @@ function convertArrayToCSV(data) {
 }
 // Function to send a message to the server
 async function sendMessageToServer(message) {
-  const response = await fetch('/api/message', {
+  fetch('/api/message', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ message })
-  });
-  const data = await response.json();
-  dialoguedata.push({Question : message , Answer : data.message});
+  }).then(response => {
+    const data = response.json();
+    dialoguedata.push({Question : message , Answer : data.message});
+    return data.message;
+  }).catch(console.error);
   // console.log(data)
-  return data.message;
+  
 }
 
 function download(){

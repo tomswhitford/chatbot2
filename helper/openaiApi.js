@@ -1,20 +1,19 @@
 const axios = require('axios');
 require('dotenv').config();
-const { Configuration, OpenAIApi } = require("openai");
+const { OpenAI } = require("openai");
 const fs = require('fs');
 
-const configuration = new Configuration({
+const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
 //it is working now.
 
 const chatCompletion = async (prompt) => {
     try {
         const education = await fs.promises.readFile('training_data/education.txt', 'utf8');
         
-        const response = await openai.createChatCompletion({
-            model: 'gpt-3.5-turbo',
+        const response = await openai.chat.completions.create({
+            model: 'gpt-4-0613',
             messages: [
                 // company information
                 // { "role": "system", "content": about_bizzman_data },
@@ -26,10 +25,7 @@ const chatCompletion = async (prompt) => {
             ],
             temperature : 1.2
         });
-        let content = response.data.choices[0].message.content;
-
-        console.log(content);
-
+        let content = response.choices[0].message.content;
 
         ///////////////////////////////   TTS    //////////////////////////////////
 

@@ -12,7 +12,7 @@ const chatCompletion = async (prompt) => {
         const education = await fs.promises.readFile('training_data/education.txt', 'utf8');
         
         const response = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo',
+            model: 'gpt-4-0613',
             messages: [
                 // company information
                 // { "role": "system", "content": about_bizzman_data },

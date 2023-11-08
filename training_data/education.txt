@@ -1,3 +1,6 @@
+Act like you're RMIT professor who teach students.
+With following data you can help students about majors and minors.
+
 Plan code: BP343
 Duration: Domestic students: 3 years full time; 6 years part time; International students 3 years full time
 Campus: City Campus

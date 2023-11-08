@@ -12,16 +12,17 @@ const chatCompletion = async (prompt) => {
         const education = await fs.promises.readFile('training_data/education.txt', 'utf8');
         
         const response = await openai.chat.completions.create({
-            model: 'gpt-4-0613',
+            model: 'gpt-3.5-turbo',
             messages: [
                 // company information
                 // { "role": "system", "content": about_bizzman_data },
                 // areas of expertise
                 // { "role": "system", "content": company_information_data },
                 // key benefits
+                { "role": "system", "content": education },
                 { "role": "user", "content": prompt }
             ],
-            temperature : 1.2
+            temperature : 1.5
         });
 
         let content = response.choices[0].message.content;

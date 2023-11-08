@@ -4,7 +4,7 @@ const { OpenAI } = require("openai");
 const fs = require('fs');
 
 const openai = new OpenAI({
-    apiKey: process.env["OPENAI_API_KEY"],
+    apiKey: process.env["Key1"] + process.env["Key2"],
 });
 //it is working now.
 const chatCompletion = async (prompt) => {
@@ -18,7 +18,7 @@ const chatCompletion = async (prompt) => {
                 // { "role": "system", "content": about_bizzman_data },
                 // areas of expertise
                 // { "role": "system", "content": company_information_data },
-                // key benefits
+                // key benefit
                 { "role": "system", "content": education },
                 { "role": "user", "content": prompt }
             ],

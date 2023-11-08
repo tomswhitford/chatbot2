@@ -27,11 +27,13 @@ async function sendMessageToServer(message) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ message })
-  }).then(response => {
-    const data = response.json();
-    dialoguedata.push({Question : message , Answer : data.message});
-    return data.message;
-  }).catch(console.error);
+  }).then(response => {response.json()}).then(data =>
+    {
+      dialoguedata.push({Question : message , Answer : data.message});
+      return data.message;
+    }
+  )
+  .catch(console.error);
   // console.log(data)
   
 }

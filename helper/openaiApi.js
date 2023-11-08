@@ -22,7 +22,7 @@ const chatCompletion = async (prompt) => {
                 { "role": "system", "content": education },
                 { "role": "user", "content": prompt }
             ],
-            temperature : 1.5
+            temperature : 1.4
         });
 
         let content = response.choices[0].message.content;

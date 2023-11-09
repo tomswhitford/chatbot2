@@ -3,6 +3,7 @@ const router = express.Router();
 const { chatCompletion } = require('../helper/openaiApi');
 router.post('/message', async (req, res) => {
   try {
+    console.log(req.body.message);
     const query = req.body.message;
     const senderId = req.body.senderId; // Add the sender ID here or use any other identifier
     const result = await chatCompletion(query);

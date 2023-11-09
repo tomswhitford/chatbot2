@@ -21,6 +21,7 @@ function convertArrayToCSV(data) {
 }
 // Function to send a message to the server
 async function sendMessageToServer(message) {
+  console.log('sent');
   const response = await fetch('/api/message', {
     method: 'POST',
     headers: {
@@ -28,6 +29,7 @@ async function sendMessageToServer(message) {
     },
     body: JSON.stringify({ message })
   });
+  console.log('receive');
   const data = await response.json();
   dialoguedata.push({Question : message , Answer : data.message});
   // console.log(data)

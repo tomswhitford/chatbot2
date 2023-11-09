@@ -9,7 +9,7 @@ const openai = new OpenAI({
 //it is working now.
 const chatCompletion = async (prompt) => {
     try {
-        const education = await fs.promises.readFile('training_data/education.txt', 'utf8');
+        const education = await fs.promises.readFile('training_data/educ1.txt', 'utf8');
         
         const response = await openai.chat.completions.create({
             model: 'gpt-4-0613',
@@ -22,7 +22,7 @@ const chatCompletion = async (prompt) => {
                 { "role": "system", "content": education },
                 { "role": "user", "content": prompt }
             ],
-            temperature : 1.4
+            temperature : 1.8
         });
 
         let content = response.choices[0].message.content;
